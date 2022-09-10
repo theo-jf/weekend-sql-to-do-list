@@ -68,12 +68,6 @@ router.put('/:id', (req, res) => {
     // Also return local time for feature-time-completed?? (probably this belongs on client side)
 });
 
-// Different put route for changing order? Priority #? Little up and down arrows like steam wish list?
-    
-    // ---- Do this for ordering put ---- 
-    // Up arrow is clicked --> rank number is swapped with what's above it!
-    // Down arrow is clicked --> rank number is swapped with what's below it!
-
 // DELETE request for deleting a task
     // Include an "are you sure?" popup from bootstrap (client side?)
 

@@ -4,6 +4,10 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 
 // ALL STRETCH GOAL HAVE TO BE DONE IN SPECIFIC BRANCHES
+//  - bootstrap
+//  - sweet alerts (confirm delete)
+//  - order reversing (you don't need this since you're going to do a changed rank function)
+//  - Time completed
 
 
 // GET route for display
@@ -23,7 +27,7 @@ const pool = require('../modules/pool.js');
     // For matching row with that id -> Find what rank number it has --> do an i+1 situation to find out whats above it
     // Decrease the above rank# by 1, increase the data-id match by 1
     
-    // ---- Do this for put ---- 
+    // ---- Do this for ordering put ---- 
     // OR just use .above and .below to get the IDs of both items that need to swap positions based on if up or down arrow is pressed
     // Redo get request to refresh DOM
 

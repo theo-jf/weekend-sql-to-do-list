@@ -12,7 +12,7 @@ const pool = require('../modules/pool.js');
 
 // GET route for display
 router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM "tasks" ORDER BY "rank";`
+    const queryText = `SELECT * FROM "tasks" ORDER BY "rank" DESC;`
     pool.query(queryText).then(result => {
         res.send(result.rows);
     })

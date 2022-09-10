@@ -26,6 +26,8 @@ function getTasks() {
         $('#taskTable').empty();
         $('#taskTable').append(`
             <tr id="hiddenTask">
+                <td></td>
+                <td></td>
                 <td><input id="newTaskDescription"/></td>
                 <td></td>
                 <td><button id="newTaskReady">add</button></td>
@@ -38,6 +40,8 @@ function getTasks() {
             } else {
                 $('#taskTable').append(`
                 <tr data-id=${task.id}>
+                    <td class="arrow up">↑</td>
+                    <td class="arrow down">↓</td>
                     <td class="name">${task.name}</td>
                     <td class="incomplete"></td>
                     <td><button class="removeTask">remove</button></td>

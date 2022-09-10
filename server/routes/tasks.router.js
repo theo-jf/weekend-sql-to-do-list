@@ -12,7 +12,7 @@ const pool = require('../modules/pool.js');
 
 // GET route for display
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "tasks" ORDER BY "rank";`
+    const queryText = `SELECT * FROM "tasks" ORDER BY "rank";`
     pool.query(queryText).then(result => {
         res.send(result.rows);
     })
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 
     console.log(`Adding task`, newTask);
 
-    let queryText = `INSERT INTO "tasks" 
+    const queryText = `INSERT INTO "tasks" 
                         ("name")
                         VALUES 
                         ($1);`;

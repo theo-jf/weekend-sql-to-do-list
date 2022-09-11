@@ -1,3 +1,117 @@
+body {
+    margin: 0;
+    background-color: rgb(251, 248, 241);
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+main {
+    background-color: rgb(247, 236, 222);
+    text-align: center;
+    padding-top: 10px;
+}
+
+header {
+    padding-left: 20%;
+    font-size: 30px;
+    background-color: rgb(247, 236, 222);
+    padding-top: 20px;
+    margin-bottom: -10px;
+}
+
+button {
+    border-style: hidden;
+    border-radius: 100%;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead {
+    margin-bottom: 10px;
+}
+
+tr {
+    border-bottom:  solid black;
+    border-width: 1px;
+}
+
+.tableOne tr:nth-child(odd){
+    background-color: rgb(233, 218, 193);
+}
+
+.tableTwo tr:nth-child(even){
+    background-color: rgb(233, 218, 193);
+}
+
+.description {
+    width: 100%;
+}
+
+.name {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.tableEnd {
+    padding-right: 10px;
+}
+
+.up {
+    padding-left: 10px;
+}
+
+.plus {
+    padding-right: 20px;
+    margin-left: 10px;
+}
+
+#newTaskDescription {
+    width: 96%;
+    margin-left: 8px;
+}
+
+#newTaskReady {
+    background-color: rgb(103, 194, 103);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#input {
+    text-align: left;
+}
+
+
 #hiddenTask {
     display: none;
+}
+
+#addTask {
+    display: inline;
+}
+
+#addTask:hover {
+    cursor: pointer;
+}
+
+.removeTask {
+    background-color: rgb(238, 99, 99);
+}
+
+.triangle {
+    width: 10px;
+}
+
+.headerElement {
+    display: inline;
+}
+
+.arrow:hover {
+    cursor: pointer;
 }

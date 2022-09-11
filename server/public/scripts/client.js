@@ -1,7 +1,10 @@
+let taskNumber = 0;
+
 $(readyNow);
 
 function readyNow() {
     getTasks();
+    appendTaskNumber();
     $('#addTask').on('click', addTaskButton);
     $('#taskTable').on('click', '#newTaskReady', submitTask); 
     $('#taskTable').on('click', '.arrow', changeTaskOrder);
@@ -22,37 +25,45 @@ function getTasks() {
         url: '/task'
     })
     .then((response) => {
+        taskNumber = 0;
         console.log('Get tasks successful');
         $('#taskTable').empty();
         $('#taskTable').append(`
             <tr id="hiddenTask">
+                <td class="arrow up"><img class="triangle" src="../images/upTriangle.png"></td>
+                <td class="arrow down"><img class="triangle" src="../images/downTriangle.png"></td>
+                <td id="input"><input id="newTaskDescription"/></td>
                 <td></td>
-                <td></td>
-                <td><input id="newTaskDescription"/></td>
-                <td></td>
-                <td><button id="newTaskReady">add</button></td>
+                <td class="tableEnd"><button id="newTaskReady">√</button></td>
             </tr>
         `);
         for (let task of response) {
+            taskNumber ++;
             let complete = (task.complete === true) ? 'yes' : 'no';
             if (complete === 'yes') {
                 // add specific id for "complete" styling
             } else {
                 $('#taskTable').append(`
                 <tr data-id=${task.id}>
-                    <td class="arrow up">↑</td>
-                    <td class="arrow down">↓</td>
+                    <td class="arrow up"><img class="triangle" src="../images/upTriangle.png"></td>
+                    <td class="arrow down"><img class="triangle" src="../images/downTriangle.png"></td>
                     <td class="name">${task.name}</td>
                     <td class="incomplete"></td>
-                    <td><button class="removeTask">remove</button></td>
+                    <td class="tableEnd"><button class="removeTask">X</button></td>
                 </tr>
                 `);
             }
         }
+        appendTaskNumber();
     })
     .catch((error) => {
         console.log('Error getting tasks', error);
     });
+}
+
+function appendTaskNumber() {
+    $('#taskNumber').empty();
+    $('#taskNumber').append(`${taskNumber}`);
 }
 
 function submitTask() {
@@ -66,6 +77,14 @@ function submitTask() {
             data: newTask
         })
         .then((response) => {
+            if ($('#taskTable').attr('class') === 'tableOne') {
+                $('#taskTable').removeClass();
+                $('#taskTable').addClass('tableTwo');
+            } else {
+                $('#taskTable').removeClass();
+                $('#taskTable').addClass('tableOne');
+            }
+
             console.log('POST /task successful', response);
             $('#hiddenTask').toggle("slide");
             getTasks();
@@ -111,6 +130,7 @@ function removeTask() {
     })
     .then((response) => {
         console.log('DELETE /task successful', response);
+        taskNumber--;
         
         // For check delete later
         // Swal.fire({

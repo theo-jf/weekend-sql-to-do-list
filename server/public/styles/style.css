@@ -1,21 +1,22 @@
 body {
     margin: 0;
-    background-color: rgb(251, 248, 241);
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    background-color: rgb(248, 249, 215);
+    font-family:'Courier New', Courier, monospace;
 }
 
 main {
-    background-color: rgb(247, 236, 222);
+    background-color: rgb(178, 200, 223);
     text-align: center;
     padding-top: 10px;
 }
 
 header {
     padding-left: 20%;
-    font-size: 30px;
-    background-color: rgb(247, 236, 222);
-    padding-top: 20px;
-    margin-bottom: -10px;
+    font-size: 40px;
+    background-color:rgb(178, 200, 223);
+    padding-top: 15px;
+    margin-bottom: -20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 button {
@@ -40,16 +41,21 @@ tr {
     border-width: 1px;
 }
 
+input {
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+}
+
 .spacer {
     visibility: hidden;
 }
 
 .tableOne tr:nth-child(odd){
-    background-color: rgb(233, 218, 193);
+    background-color: rgb(196, 215, 224);
 }
 
 .tableTwo tr:nth-child(even){
-    background-color: rgb(233, 218, 193);
+    background-color: rgb(196, 215, 224);
 }
 
 .complete {
@@ -58,7 +64,7 @@ tr {
 
 .normalText {
     text-decoration: none;
-    color: rgb(84, 186, 185);
+    color: rgb(50, 170, 104);
 }
 
 .completion:hover {

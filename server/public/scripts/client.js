@@ -44,7 +44,6 @@ function getTasks() {
             </tr>
         `);
         for (let task of response) {
-            taskNumber ++;
             let complete = (task.complete === true) ? 'yes' : 'no';
             if (complete === 'yes') {
                 $('#taskTable').append(`
@@ -57,6 +56,7 @@ function getTasks() {
                 </tr>
                 `);
             } else {
+                taskNumber ++;
                 $('#taskTable').append(`
                 <tr data-id=${task.id}>
                     <td class="arrow up"><img class="triangle" src="../images/upTriangle.png"></td>

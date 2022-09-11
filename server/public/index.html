@@ -10,20 +10,22 @@
     <title>Task Manager</title>
 </head>
 <body>
+    <header>
+        <p class="headerElement">Tasks:</p>
+        <p class="headerElement"><span id="taskNumber"></span></p>
+    </header>
     <main>
-        <h2>Tasks</h2>
-        <h2><span id="taskNumber"></span></h2>
         <table>
             <thead>
               <tr>
-                <th>Tasks</th>
                 <th></th>
                 <th></th>
+                <th class="description"></th>
                 <th></th>
-                <th id="addTask">+</th>
+                <th class="tableEnd plus" id="addTask">+</th>
               </tr>
             </thead>
-            <tbody id="taskTable">
+            <tbody class="tableOne" id="taskTable">
             </tbody>
         </table>
     </main>

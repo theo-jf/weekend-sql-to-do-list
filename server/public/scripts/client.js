@@ -192,23 +192,21 @@ function completeTask() {
 }
 
 function removeTask() {
-    $.ajax({
-        method: 'DELETE',
-        url: `/task/${$(this).parent().parent().data('id')}`
-    })
-    .then((response) => {
-        console.log('DELETE /task successful', response);
-        taskNumber--;
-        
-        // For check delete later
-        // Swal.fire({
-        //     icon: 'success',
-        //     title: 'Are you sure?',
-        //     text: 'Success',
-        // })
-        getTasks();
-    })
-    .catch((error) => {
-        console.log('error in DELETE /task', error);
-    });
+
+    if (confirm("Permanently delete task?")) {
+        $.ajax({
+            method: 'DELETE',
+            url: `/task/${$(this).parent().parent().data('id')}`
+        })
+        .then((response) => {
+            console.log('DELETE /task successful', response);
+            taskNumber--;
+            getTasks();
+        })
+        .catch((error) => {
+            console.log('error in DELETE /task', error);
+        });
+    } else {
+        return;
+    }
 }

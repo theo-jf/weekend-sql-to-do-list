@@ -1,5 +1,6 @@
 const dateObj = new Date();
 
+let okayToSubmit = false;
 let taskNumber = 0;
 
 $(readyNow);
@@ -10,6 +11,8 @@ function readyNow() {
     $('#addTask').on('click', addTaskButton);
     $('#taskTable').on('click', '#newTaskReady', submitTask); 
     $('#taskTable').on('click', '.arrow', changeTaskOrder);
+    $('#taskTable').on('click', '.name', editName);
+    $('html').on('dblclick', submitEditedName);
     $('#taskTable').on('click', '.completion', completeTask);
     $('#taskTable').on('click', '.removeTask', removeTask);
 }
@@ -48,7 +51,7 @@ function getTasks() {
                 <tr data-id=${task.id}>
                     <td class="arrow up"><img class="triangle" src="../images/upTriangle.png"></td>
                     <td class="arrow down"><img class="triangle" src="../images/downTriangle.png"></td>
-                    <td class="name"><span class="complete">${task.name}</span>  <span class="normalText">Completed on ${dateObj.toDateString()}!</span></td>
+                    <td class="name"><span class="toParse complete">${task.name}</span>  <span class="normalText">Completed on ${dateObj.toDateString()}!</span></td>
                     <td class="completion">[✔]</td>
                     <td class="tableEnd"><button class="removeTask">X</button></td>
                 </tr>
@@ -58,7 +61,7 @@ function getTasks() {
                 <tr data-id=${task.id}>
                     <td class="arrow up"><img class="triangle" src="../images/upTriangle.png"></td>
                     <td class="arrow down"><img class="triangle" src="../images/downTriangle.png"></td>
-                    <td class="name">${task.name}</td>
+                    <td class="toParse name">${task.name}</td>
                     <td class="completion">[]</td>
                     <td class="tableEnd"><button class="removeTask">X</button></td>
                 </tr>
@@ -132,6 +135,46 @@ function changeTaskOrder() {
     .catch((error) => {
         console.log('error in PUT /order', error);
     });
+}
+
+function editName() {
+    let oldName = $(this).closest('.toParse').text();
+        if (oldName === '') {
+            oldName = $(this).find('.toParse').text();
+        }
+    console.log(oldName);
+    $(this).text('');
+    $(this).removeClass();
+    $(this).addClass('nameTemp');
+    $(this).append(`<input class="newName" value="${oldName}">`);
+    
+    // Timeout submitEditedName's ability to trigger
+    setTimeout(
+        function() {
+            okayToSubmit = true;
+        }, 1000);
+}
+
+function submitEditedName() {
+   if (okayToSubmit === true) {
+
+        let newName = $('.newName').val();
+        let updateId = $('.nameTemp').parent().data('id');
+
+        $.ajax({
+            method: 'PUT',
+            url: `/edit/${updateId}`,
+            data: {newName}
+        })
+        .then((response) => {
+            console.log('PUT /edit successful', response);
+            okayToSubmit = false;
+            getTasks();
+        })
+        .catch((error) => {
+            console.log('error in PUT /edit', error);
+        });
+    }
 }
 
 function completeTask() {

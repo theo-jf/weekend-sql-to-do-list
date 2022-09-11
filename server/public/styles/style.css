@@ -77,6 +77,14 @@ tr {
     font-size: 20px;
 }
 
+.nameTemp {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
 .tableEnd {
     padding-right: 10px;
 }

@@ -64,8 +64,6 @@ router.put('/:id', (req, res) => {
             console.log('Error updating task', error);
             res.sendStatus(500);
         });
-
-    // Also return local time for feature-time-completed?? (probably this belongs on client side)
 });
 
 // DELETE request for deleting a task

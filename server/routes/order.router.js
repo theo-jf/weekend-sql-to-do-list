@@ -4,10 +4,10 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 
 // PUT request for order change --> url will pass ?id='', id will be id to swap with
-router.put('/:id/', (req, res) => {
-    console.log(`Updating task order, id ${req.params.id} and ${req.query.id}`);
-    let updateId = req.params.id;
-    let swapId = req.query.id;
+router.put('/', (req, res) => {
+    console.log(`Updating task order, id ${req.query.clickedId} and ${req.query.swapId}`);
+    let updateId = req.query.clickedId;
+    let swapId = req.query.swapId;
 
 
     // Swap ranks associated with both ids

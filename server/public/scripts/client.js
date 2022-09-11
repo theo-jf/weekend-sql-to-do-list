@@ -2,15 +2,15 @@ $(readyNow);
 
 function readyNow() {
     getTasks();
-    $('#addTask').on('click', addTask);
+    $('#addTask').on('click', addTaskButton);
+    $('#taskTable').on('click', '#newTaskReady', submitTask); 
     $('#taskTable').on('click', '.arrow', changeTaskOrder);
     $('#taskTable').on('click', '.removeTask', removeTask);
 }
 
 // Shows new task input at the top of the task table
-function addTask() {
+function addTaskButton() {
     $('#hiddenTask').toggle("slide");
-    $('#newTaskReady').on('click', submitTask);
 }
 
 
@@ -33,7 +33,7 @@ function getTasks() {
                 <td><button id="newTaskReady">add</button></td>
             </tr>
         `);
-        for (let task of tasks) {
+        for (let task of response) {
             let complete = (task.complete === true) ? 'yes' : 'no';
             if (complete === 'yes') {
                 // add specific id for "complete" styling
@@ -56,10 +56,7 @@ function getTasks() {
 }
 
 function submitTask() {
-    if ($('#newTaskDescription').val() === '') {
-        $('#hiddenTask').toggle();
-        return;
-    } else {
+    if ($('#newTaskDescription').val() != '') {
         let newTask = {
           name: $('#newTaskDescription').val(),
         }
@@ -70,6 +67,7 @@ function submitTask() {
         })
         .then((response) => {
             console.log('POST /task successful', response);
+            $('#hiddenTask').toggle("slide");
             getTasks();
         })
         .catch((error) => {
@@ -84,15 +82,18 @@ function changeTaskOrder() {
     let idOne = $(this).parent().data('id') // edit targeting later
     let idTwo;
 
+
     if (arrowDirection === 'up') {
-        idTwo = $(this).parent().prev().data('id'); // edit targeting later
+        idTwo = $(this).parent().prev('tr').data('id'); // edit targeting later
     } else if (arrowDirection === 'down') {
-        idTwo = $(this).parent().next().data('id'); // edit targeting later
+        idTwo = $(this).parent().next('tr').data('id'); // edit targeting later
     }   
+
+    console.log(`idOne: ${idOne} idTwo: ${idTwo}`);
 
     $.ajax({
         method: 'PUT',
-        url: `/order/${idOne}/?=${idTwo}`
+        url: `/order/?clickedId=${idOne}&swapId=${idTwo}`
     })
     .then((response) => {
         console.log('PUT /order successful', response);

@@ -58,6 +58,7 @@ tr {
 
 .normalText {
     text-decoration: none;
+    color: rgb(84, 186, 185);
 }
 
 .completion:hover {

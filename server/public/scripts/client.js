@@ -1,3 +1,5 @@
+const dateObj = new Date();
+
 let taskNumber = 0;
 
 $(readyNow);
@@ -46,7 +48,7 @@ function getTasks() {
                 <tr data-id=${task.id}>
                     <td class="arrow up"><img class="triangle" src="../images/upTriangle.png"></td>
                     <td class="arrow down"><img class="triangle" src="../images/downTriangle.png"></td>
-                    <td class="name"><span class="complete">${task.name}</span>  <span class="normalText">Completed at !</span></td>
+                    <td class="name"><span class="complete">${task.name}</span>  <span class="normalText">Completed on ${dateObj.toDateString()}!</span></td>
                     <td class="completion">[✔]</td>
                     <td class="tableEnd"><button class="removeTask">X</button></td>
                 </tr>

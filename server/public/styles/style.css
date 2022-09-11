@@ -40,6 +40,10 @@ tr {
     border-width: 1px;
 }
 
+.spacer {
+    visibility: hidden;
+}
+
 .tableOne tr:nth-child(odd){
     background-color: rgb(233, 218, 193);
 }
@@ -48,13 +52,25 @@ tr {
     background-color: rgb(233, 218, 193);
 }
 
+.complete {
+    text-decoration: line-through;
+}
+
+.normalText {
+    text-decoration: none;
+}
+
+.completion:hover {
+    cursor: pointer;
+}
+
 .description {
     width: 100%;
 }
 
 .name {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     text-align: left;
     padding-left: 10px;
     font-size: 20px;

@@ -20,7 +20,9 @@ Full assignment details can be found in [`INSTRUCTIONS.md`](INSTRUCTIONS.md)
 
 ## Installation and Setup
 
-(Virtual deployment coming soon!)
+Visit the fully deployed app at [here](https://whispering-thicket-84465.herokuapp.com)
+
+Or, run it locally:
 
 1. Clone this repository from Github
 2. Create a database titled "weekend-to-do-app" and create a "tasks" table using the initializer found in `database.sql`
